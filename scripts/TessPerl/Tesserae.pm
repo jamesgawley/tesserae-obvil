@@ -48,7 +48,7 @@ my %lang;
 my $stemmer;
 
 unless ($override_stemmer) {
-
+	
 	$stemmer = Lingua::Stem->new();
 }
 
@@ -101,17 +101,20 @@ our $phrase_delimiter = '[\.\?\!\;\:]';
 
 my $wchar_greek = '\w\'';
 my $wchar_latin = 'a-zA-Z';
+my $wchar_french = '\p{L}';
 
 our %non_word = (
 	'la'  => qr([^$wchar_latin]+), 
 	'grc' => qr([^$wchar_greek]+),
-	'en'  => qr([^$wchar_latin]+) 
+	'en'  => qr([^$wchar_latin]+),
+        'fr'  => qr([^$wchar_french]+)	
 	); 
 	
 our %is_word = (
 	'la'  => qr([$wchar_latin]+), 
 	'grc' => qr([$wchar_greek]+),
-	'en'  => qr('?[$wchar_latin]+(?:['-][$wchar_latin]*)?) 
+	'en'  => qr('?[$wchar_latin]+(?:['-][$wchar_latin]*)?),
+       'fr'  => qr([$wchar_french]+)	
 	);
 
 ########################################
