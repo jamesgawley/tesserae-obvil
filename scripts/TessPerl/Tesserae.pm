@@ -905,6 +905,10 @@ sub chr_ngrams {
 
 sub initialize_lingua_stem {
 
+	my $lang = shift;
+
+	Lingua::Stem::set_locale($lang);
+
 	if ($override_stemmer) {
 	
 		print STDERR "Tesserae can't find Lingua::Stem. Falling back to stem dictionary if one exists\n";

@@ -215,14 +215,7 @@ if ($max_processes) {
 	$pm = Parallel::ForkManager->new($max_processes);
 }
 
-#
-# initialize stemmer
-#
 
-if ($use_lingua_stem) {
-
-	Tesserae::initialize_lingua_stem();
-}
 
 #
 # get texts to process from command-line args
@@ -231,6 +224,18 @@ if ($use_lingua_stem) {
 my @files = map { glob } @ARGV;
 
 @files = @{check_feature_dep(Tesserae::process_file_list(\@files))};
+
+#
+# initialize stemmer
+#
+
+if ($use_lingua_stem) {
+
+	my $lang = Tesserae::lang($files[0]);
+
+	Tesserae::initialize_lingua_stem($lang);
+}
+
 
 #
 # process the files
