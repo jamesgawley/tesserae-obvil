@@ -1,17 +1,17 @@
 <?php
 	$lang = array(
-		'target' => 'la',
-		'source' => 'la'
+		'target' => 'fr',
+		'source' => 'fr'
 	);
 	$selected = array(
-		'target' => 'vergil.georgics.part.1',
-		'source' => 'catullus.carmina'
+		'target' => 'apollinaire.alcools',
+		'source' => 'victor_hugo.legende'
 	);
 	$features = array(
 		'word' => 'exact word',
 		'stem' => 'lemma',
-		'syn'  => 'semantic',
-		'syn_lem'  => 'lemma + semantic',		
+#		'syn'  => 'semantic',
+#		'syn_lem'  => 'lemma + semantic',		
 		'3gr'  => 'sound'
 	);
 	$selected_feature = 'stem';
@@ -27,10 +27,10 @@
 <?php include "nav_lang.php"; ?>	
 <div id="main">
 
-	<h1>Latin Search</h1>
+	<h1>French Search</h1>
 	
 	<p>
-		The Tesserae project aims to provide a flexible and robust web interface for exploring intertextual parallels. 
+		Tesserae-Obvil project aims to provide a flexible and robust web interface for exploring intertextual parallels. 
 		Select two poems below to see a list of lines sharing two or more words (regardless of inflectional changes).
 	</p>
 	
