@@ -149,6 +149,36 @@ else {
 # if the context is fewer than 80 words, then add some
 # to the beginning and the end.
 
+# find the locus of the matching line in this poem.
+my $match_locus = $line[$id]->{'LOCUS'};
+
+my $abbreviation = $abbr{$target};
+
+# set the lowest numeric level to zero.
+
+$match_locus =~ s/(\.\d+)?$/\.0/;
+
+my $title_tag = "<$abbreviation $match_locus>";
+
+# look up that locus in the index of titles.
+my $title_index = catfile($fs{data}, 'common', "$lang{$target}.titles.txt");
+
+open (my $title_file, "<", $title_index) or die $!;
+
+my %title_hash = {};
+
+while (<$title_file>) {
+
+	my @line = split(",", $_);
+	
+	$title_hash{$line[0]} = $line[1];
+
+}
+
+my $title = $title_hash{$title_tag};
+
+print "<tr><td></td><td></td><td>$title</td></tr>\n";
+
 for (my ($len, $left, $right) = (0, @lines[0,-1]); $len < 80;) {
 
 	$left--  unless $left  == 0;
