@@ -39,6 +39,7 @@
 <ap. al. 39.0>,Signe
 <ap. al. 40.0>,Un Soir
 <ap. al. 41.0>,La Dame
+<ap. al. 42.0>,Les Fiançailles
 <ap. al. 43.0>,Clair de Lune
 <ap. al. 44.0>,1909
 <ap. al. 46.0>,Automne malade

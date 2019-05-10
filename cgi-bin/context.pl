@@ -168,16 +168,18 @@ open (my $title_file, "<", $title_index) or die $!;
 my %title_hash = {};
 
 while (<$title_file>) {
-
-	my @line = split(",", $_);
+	chomp;
 	
+	my @line = split (",", $_);
+
 	$title_hash{$line[0]} = $line[1];
 
 }
 
+
 my $title = $title_hash{$title_tag};
 
-print "<tr><td></td><td></td><td>$title</td></tr>\n";
+print "$title<br/>";
 
 for (my ($len, $left, $right) = (0, @lines[0,-1]); $len < 80;) {
 
