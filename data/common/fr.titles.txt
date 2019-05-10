@@ -1,47 +1,47 @@
-<ap. al. 1.0> Zone, Apollinaire 'Alcools'
-<ap. al. 2.0> La Chanson du Mal-Aimé
-<ap. al. 3.0> Les Colchiques
-<ap. al. 4.0> Palais
-<ap. al. 5.0> Chantre
-<ap. al. 6.0> Crépuscule
-<ap. al. 7.0> Annie
-<ap. al. 8.0> La Maison des Morts
-<ap. al. 9.0> Clotilde
-<ap. al. 10.0> Cortège
-<ap. al. 11.0> Marizibill
-<ap. al. 12.0> Le Voyageur
-<ap. al. 13.0> Marie
-<ap. al. 14.0> La Blanche Neige
-<ap. al. 15.0> Poème lu au mariage d’André Salmon
-<ap. al. 16.0> L’Adieu
-<ap. al. 17.0> Salomé
-<ap. al. 18.0> La Porte
-<ap. al. 19.0> Merlin et la vieille femme
-<ap. al. 20.0> Saltimbanques
-<ap. al. 21.0> Le Larron
-<ap. al. 22.0> Le Vent nocturne
-<ap. al. 23.0> Lul de Faltenin
-<ap. al. 24.0> La Tzigane
-<ap. al. 25.0> L’Ermite
-<ap. al. 26.0> Automne
-<ap. al. 27.0> L’Émigrant de Landor Road
-<ap. al. 28.0> Rosemonde
-<ap. al. 29.0> Le Brasier
-<ap. al. 30.0> Nuit rhénane
-<ap. al. 31.0> Mai
-<ap. al. 32.0> La Synagogue
-<ap. al. 33.0> Les Cloches
-<ap. al. 34.0> La Loreley
-<ap. al. 35.0> Schinderhannes
-<ap. al. 36.0> Rhénane d’automne
-<ap. al. 37.0> Les Sapins
-<ap. al. 38.0> Les Femmes
-<ap. al. 39.0> Signe
-<ap. al. 40.0> Un Soir
-<ap. al. 41.0> La Dame
-<ap. al. 43.0> Clair de Lune
-<ap. al. 44.0> 1909
-<ap. al. 46.0> Automne malade
-<ap. al. 47.0> Hôtels
-<ap. al. 48.0> Cors de chasse
-<ap. al. 49.0> Vendémiaire
+<ap. al. 1.0>,Zone
+<ap. al. 2.0>,La Chanson du Mal-Aimé
+<ap. al. 3.0>,Les Colchiques
+<ap. al. 4.0>,Palais
+<ap. al. 5.0>,Chantre
+<ap. al. 6.0>,Crépuscule
+<ap. al. 7.0>,Annie
+<ap. al. 8.0>,La Maison des Morts
+<ap. al. 9.0>,Clotilde
+<ap. al. 10.0>,Cortège
+<ap. al. 11.0>,Marizibill
+<ap. al. 12.0>,Le Voyageur
+<ap. al. 13.0>,Marie
+<ap. al. 14.0>,La Blanche Neige
+<ap. al. 15.0>,Poème lu au mariage d’André Salmon
+<ap. al. 16.0>,L’Adieu
+<ap. al. 17.0>,Salomé
+<ap. al. 18.0>,La Porte
+<ap. al. 19.0>,Merlin et la vieille femme
+<ap. al. 20.0>,Saltimbanques
+<ap. al. 21.0>,Le Larron
+<ap. al. 22.0>,Le Vent nocturne
+<ap. al. 23.0>,Lul de Faltenin
+<ap. al. 24.0>,La Tzigane
+<ap. al. 25.0>,L’Ermite
+<ap. al. 26.0>,Automne
+<ap. al. 27.0>,L’Émigrant de Landor Road
+<ap. al. 28.0>,Rosemonde
+<ap. al. 29.0>,Le Brasier
+<ap. al. 30.0>,Nuit rhénane
+<ap. al. 31.0>,Mai
+<ap. al. 32.0>,La Synagogue
+<ap. al. 33.0>,Les Cloches
+<ap. al. 34.0>,La Loreley
+<ap. al. 35.0>,Schinderhannes
+<ap. al. 36.0>,Rhénane d’automne
+<ap. al. 37.0>,Les Sapins
+<ap. al. 38.0>,Les Femmes
+<ap. al. 39.0>,Signe
+<ap. al. 40.0>,Un Soir
+<ap. al. 41.0>,La Dame
+<ap. al. 43.0>,Clair de Lune
+<ap. al. 44.0>,1909
+<ap. al. 46.0>,Automne malade
+<ap. al. 47.0>,Hôtels
+<ap. al. 48.0>,Cors de chasse
+<ap. al. 49.0>,Vendémiaire
