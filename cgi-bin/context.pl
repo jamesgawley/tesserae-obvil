@@ -12,7 +12,7 @@ use warnings;
 use Cwd qw/abs_path/;
 use File::Spec::Functions;
 use FindBin qw/$Bin/;
-
+binmode(STDOUT, ":utf8");
 # read config before executing anything else
 
 my $lib;
