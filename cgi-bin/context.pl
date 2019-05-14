@@ -166,7 +166,7 @@ my $title_index = catfile($fs{data}, 'common', "$lang{$target}.titles.txt");
 
 open (my $title_file, "<", $title_index) or die $!;
 
-my %title_hash = {};
+my %title_hash = ();
 
 while (<$title_file>) {
 	chomp;
