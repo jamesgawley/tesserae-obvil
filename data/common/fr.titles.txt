@@ -46,3 +46,41 @@
 <ap. al. 47.0>,Hôtels
 <ap. al. 48.0>,Cors de chasse
 <ap. al. 49.0>,Vendémiaire
+<vic. hug. 1.0.0> Le Sacre de la Femme
+<vic. hug. 2.0.0> La Conscience
+<vic. hug. 3.0.0> Puissance Égale Bonté
+<vic. hug. 4.0.0> Les Lions
+<vic. hug. 5.0.0> Le Temple
+<vic. hug. 6.0.0> Booz Endormi
+<vic. hug. 7.0.0> Dieu Invisible au Philosophe
+<vic. hug. 8.0.0> Première rencontre du Christ avec le tombeau
+<vic. hug. 9.0.0> Au lion d’Androclès
+<vic. hug. 10.0.0> L’an neuf de l’hégire
+<vic. hug. 11.0.0> Mahomet
+<vic. hug. 12.0.0> Le cèdre
+<vic. hug. 13.0.0> Le parricide
+<vic. hug. 14.0.0> Le mariage de Roland
+<vic. hug. 15.0.0> Aymerillot
+<vic. hug. 16.0.0> Bivar
+<vic. hug. 17.0.0> Le jour des rois
+<vic. hug. 18.0.0> La terre a vu jadis
+<vic. hug. 19.0.0> Le petit roi de Galice
+<vic. hug. 20.0.0> Éviradnus
+<vic. hug. 21.0.0> Zim-Zizimi
+<vic. hug. 22.0.0> 1453
+<vic. hug. 23.0.0> Sultan Mourad
+<vic. hug. 24.0.0> Les conseillers probes et libres
+<vic. hug. 25.0.0> La défiance d’onfroy
+<vic. hug. 26.0.0> La confiance du marquis fabrice
+<vic. hug. 27.0.0> Le satyre
+<vic. hug. 28.0.0> La rose de l’infante
+<vic. hug. 29.0.0> Les raisons du Momotombo
+<vic. hug. 30.0.0> La chanson des aventuriers de la mer
+<vic. hug. 31.0.0> Le régiment du baron Madruce
+<vic. hug. 32.0.0> Après la bataille
+<vic. hug. 33.0.0> Le crapaud
+<vic. hug. 34.0.0> Les pauvres gens
+<vic. hug. 35.0.0> Paroles dans l’épreuve
+<vic. hug. 36.0.0> Pleine mer
+<vic. hug. 37.0.0> Plein ciel
+<vic. hug. 38.0.0> La trompette du jugement
