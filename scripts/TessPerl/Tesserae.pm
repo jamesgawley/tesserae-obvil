@@ -7,6 +7,7 @@ use utf8;
 use Unicode::Normalize;
 use Encode;
 use Config;
+use File::Slurp;
 
 require Exporter;
 
@@ -940,6 +941,77 @@ sub get_base {
 	}
 	
 	return $base;
+}
+
+sub find_cts {
+
+	#lookup cts urn from file
+
+	my $text = shift;
+	
+	my $ctsfile = catfile($fs{data}, 'common', 'cts.store');
+	
+	my %names = %{retrieve($ctsfile)};
+	
+	return $names{$text};
+
+
+}
+
+sub build_cts_path {
+	
+	# translate the filenames into cts urns
+	
+	my ($target, $source) = @_;
+	
+	
+	# load the cts_list file
+	
+	my $dict_file = catfile($fs{data}, 'common', 'cts_list.py');
+	
+	my $cts_dict =  read_file( $dict_file );
+	
+	
+	#convert from a python dictionary to a perl hash
+
+	$cts_dict =~ s/\{/\(/g;
+
+	$cts_dict =~ s/\}/\)/g;
+	
+	$cts_dict =~ s/'\:'/'\t=>\t'/g;
+
+	my $cts_ref = load_cts_map();
+
+	my %cts_hash = %{$cts_hash};
+	
+	#lookup the appropriate urns
+	
+	my $path = catfile($cts_hash{$target}, $cts_hash{$source});
+	
+	return $path;
+
+}
+
+sub load_cts_map {
+
+	# load the cts_list file
+	
+	my $dict_file = catfile($fs{data}, 'common', 'cts_list.py');
+	
+	my $cts_dict =  read_file( $dict_file );
+	
+	
+	#convert from a python dictionary to a perl hash
+
+	$cts_dict =~ s/\{/\(/g;
+
+	$cts_dict =~ s/\}/\)/g;
+	
+	$cts_dict =~ s/'\:'/'\t=>\t'/g;
+	my %cts_hash = eval($cts_dict);
+
+	return \%cts_hash;
+
 }
 
 sub escape_path {
