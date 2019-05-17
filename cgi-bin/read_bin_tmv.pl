@@ -542,6 +542,11 @@ if ($score_basis =~ /^feat/) {
 	
 }
 
+if ($lang eq 'fr') {
+
+	$modern = 1;
+
+}
 
 unless ($modern == 1) {
 	
