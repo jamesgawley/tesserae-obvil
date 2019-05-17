@@ -157,7 +157,7 @@ my $abbreviation = $abbr{$target};
 
 # set the lowest numeric level to zero.
 
-$match_locus =~ s/(\.\d+)?$/\.0/;
+$match_locus =~ s/(\d+)\.(\d)+\.?(\d+)?/\1.0.0/;
 
 my $title_tag = "<$abbreviation $match_locus>";
 
