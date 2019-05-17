@@ -647,7 +647,7 @@ sub print_html {
 		print "          <td>\n";
 		print "            <a href=\"javascript:;\""
 		    . " onclick=\"window.open(link='$url{cgi}/context.pl?target=$utarget;unit=$unit;id=$unit_id_target', "
-		    . " 'context', 'width=520,height=240')\">";
+		    . " 'context', 'width=520,height=340')\">";
 		print "$abbr{$target} $unit_target[$unit_id_target]{LOCUS}";
 		print "            </a>\n";
 		print "          </td>\n";
