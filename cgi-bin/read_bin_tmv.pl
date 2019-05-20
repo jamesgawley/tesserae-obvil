@@ -1993,6 +1993,8 @@ sub print_html {
 	
 	if ($last > $total_matches) { $last = $total_matches }
 	
+	print STDERR "$fs{html}/results.php\n";
+	
 	my $html = `php -f $fs{html}/results.php`;
 	
 	my ($top, $bottom) = split /<!--results-->/, $html;
