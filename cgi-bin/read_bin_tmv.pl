@@ -1751,13 +1751,13 @@ sub nav_page {
 		if ($page > 1) {
 		
 			$back_arrow .= "<span>";
-			$back_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$dist;export=$export;sort=$sort;rev=$rev;page=1;batch=$batch\"> [first] </a>\n";
+			$back_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$window_size;export=$export;sort=$sort;rev=$rev;page=1;batch=$batch\"> [first] </a>\n";
 			$back_arrow .= "</span>";
 
 			my $p = $page-1;
 
 			$back_arrow .= "<span>";				
-			$back_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$dist;export=$export;sort=$sort;rev=$rev;page=$p;batch=$batch\"> [previous] </a>\n";
+			$back_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$window_size;export=$export;sort=$sort;rev=$rev;page=$p;batch=$batch\"> [previous] </a>\n";
 			$back_arrow .= "</span>";
 		
 		
@@ -1769,11 +1769,11 @@ sub nav_page {
 			my $p = $page+1;
 		
 			$forward_arrow .= "<span>";
-			$forward_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$dist;export=$export;sort=$sort;rev=$rev;page=$p;batch=$batch\"> [next] </a>\n";
+			$forward_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$window_size;export=$export;sort=$sort;rev=$rev;page=$p;batch=$batch\"> [next] </a>\n";
 			$forward_arrow .= "</span>";
 
 			$forward_arrow .= "<span>";
-			$forward_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$dist;export=$export;sort=$sort;rev=$rev;page=$pages;batch=$batch\"> [last] </a>\n";		       
+			$forward_arrow .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$window_size;export=$export;sort=$sort;rev=$rev;page=$pages;batch=$batch\"> [last] </a>\n";		       
 			$forward_arrow .= "</span>";
 		
 			@right = ($page+1..($page < $pages-4 ? $page+4 : $pages));
@@ -1791,7 +1791,7 @@ sub nav_page {
 			}
 			else {
 			
-				$html .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$dist;export=$export;sort=$sort;rev=$rev;page=$p;batch=$batch\"> $p </a>";
+				$html .= "<a href=\"$url{cgi}/read_bin_tmv.pl?target=$target;source=$source;dist=$window_size;export=$export;sort=$sort;rev=$rev;page=$p;batch=$batch\"> $p </a>";
 			}	
 			
 			$html .= "</span>";
