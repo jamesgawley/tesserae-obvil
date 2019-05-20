@@ -239,7 +239,7 @@ my $page = 1;
 
 # how many results on a page?
 
-my $batch = 1000;
+my $batch = 100;
 
 # reverse order ?
 
@@ -1995,7 +1995,7 @@ sub print_html {
 	
 	print STDERR "$fs{html}/results.php\n";
 	
-	my $html = `php -f $fs{html}/results.php` or die $!;
+	my $html = `php -f $fs{html}/results.php`;
 	
 	my ($top, $bottom) = split /<!--results-->/, $html;
 	
