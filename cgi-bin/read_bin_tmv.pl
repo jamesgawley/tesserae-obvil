@@ -1791,7 +1791,7 @@ sub nav_page {
 			}
 			else {
 			
-				$html .= "<a href=\"$url{cgi}/read_bin.pl?session=$session;sort=$sort;rev=$rev;page=$p;batch=$batch\"> $p </a>";
+				$html .= "<a href=\"$url{cgi}/read_bin_tmv.pl?session=$session;sort=$sort;rev=$rev;page=$p;batch=$batch\"> $p </a>";
 			}	
 			
 			$html .= "</span>";
@@ -1819,7 +1819,7 @@ sub re_sort {
 
 	my $html=<<END;
 	
-	<form action="$url{cgi}/read_bin.pl" method="post" id="Form1">
+	<form action="$url{cgi}/read_bin_tmv.pl" method="post" id="Form1">
 		
 		<table>
 			<tr>
@@ -1993,7 +1993,9 @@ sub print_html {
 	
 	if ($last > $total_matches) { $last = $total_matches }
 	
-	my $html = `php -f $fs{html}/results.php`;
+	print STDERR "$fs{html}/results.php\n";
+	
+	my $html = `php -f $fs{html}/results.php` or die $!;
 	
 	my ($top, $bottom) = split /<!--results-->/, $html;
 	
