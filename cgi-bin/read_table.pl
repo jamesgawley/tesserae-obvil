@@ -428,6 +428,7 @@ else {
 	$multi_cutoff    = $query->param('mcutoff')      || $multi_cutoff;
 	@include         = $query->param('include');
 	$recall_cache    = $query->param('recall_cache') || $recall_cache;
+	$bigram_scoring     = $query->param('bigram_scoring')    || $bigram_scoring;
 	
 	unless (defined $source) {
 	
@@ -549,7 +550,7 @@ if ($bigram_scoring eq "yes") {
 
 	my $file_multi = catfile($fs{data}, 'v3', $lang, $target, "$target\.multi_$unit\_word");
 
-	%multi = retrieve($file_multi);
+	%multi = retrieve($file_multi) or die $!;
 
 }
 
@@ -617,7 +618,8 @@ unless ($quiet) {
 	print STDERR "score basis=$score_basis\n";
 	print STDERR "corpus-wide flag=$corpus_wide\n";
 	print STDERR "File for source frequency=$file_freq_source\n";	
-	print STDERR "File for target frequency=$file_freq_target\n";		
+	print STDERR "File for target frequency=$file_freq_target\n";	
+	print STDERR "Use bigram scoring: $bigram_scoring\n";	
 }
 
 
