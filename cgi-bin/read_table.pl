@@ -852,7 +852,7 @@ for my $unit_id_target (keys %match_target) {
 		
 		if ($bigram_scoring eq "yes") {
 		
-			$score = score_bigram($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance);
+			$score = score_bigram($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance, $unit_id_target);
 		
 		} else {
 		
@@ -1274,7 +1274,7 @@ sub score_bigram {
 	# of the matching bigrams, find the one with the lowest frequency
 	# default version uses the target's .multi file only, and exact words only.
 
-	my ($match_t_ref, $match_s_ref, $distance) = @_;
+	my ($match_t_ref, $match_s_ref, $distance, $unit_id_target) = @_;
 
 	my %match_target = %$match_t_ref;
 	my %match_source = %$match_s_ref;
@@ -1303,7 +1303,9 @@ sub score_bigram {
 	
 	#find the lowest frequency shared bigram
 	
-	my $score = .000001;
+	my $score = -1;
+	
+	my $freq = 2;
 	
 	foreach my $bigram (@bigrams) {
 	
@@ -1313,14 +1315,30 @@ sub score_bigram {
 		
 	#	$score += 1/$num_bigrams;# if 1/$num_bigrams < $freq;		
 	
-		$score = 1/$num_bigrams if 1/$num_bigrams > $score;
+#		$score = 1/$num_bigrams if 1/$num_bigrams > $score;
+
+		$freq = $num_bigrams if $num_bigrams < $freq;
 	
 	}
+	
+	if ($freq < 2) {
+
+		foreach my $bigram (@bigrams) {
+	
+			next unless $multi{$bigram};
+	
+			$score = $multi{$bigram}->{$unit_id_target} unless $score > $multi{$bigram}->{$unit_id_target};
 		
-	$score =  sprintf("%.3f", ($score/$distance));
+		}
 	
-	print join @bigrams unless $score;
+	}
+	else {
 	
+		$score = -1;
+	
+	}	
+	#$score =  sprintf("%.3f", ($score/$distance));
+		
 	return $score;
 
 }
