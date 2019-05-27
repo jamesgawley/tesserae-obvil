@@ -216,6 +216,10 @@ my $feature = "stem";
 
 my $stopwords = 10;
 
+# bigram_scoring determines drops word frequencies in favor of bigram frequencies
+
+my $bigram_scoring;
+
 # stoplist_basis is where we draw our feature
 # frequencies from: source, target, or corpus
 
@@ -301,6 +305,7 @@ GetOptions(
 			'benchmark'    => \$bench,
 			'no-cgi'       => \$no_cgi,
 			'quiet'        => \$quiet,
+			'bigram_scoring' => \$bigram_scoring,
 			'help'         => \$help);
 
 #
@@ -327,6 +332,7 @@ if ($score_basis eq 'feature')  {
 	$score_basis = $Tesserae::feature_score{$feature} || 'word';
 	
 }
+
 
 # html header
 #
@@ -387,7 +393,6 @@ END
 
 	$file_results = catfile($fs{tmp}, "tesresults-$session");
 }
-
 
 #
 # abbreviations of canonical citation refs
@@ -535,7 +540,18 @@ if ($corpus_wide == 1) {
 }
 
 
+#
+# get the bigram information, if it's needed.
+#
+my %multi;
 
+if ($bigram_scoring) {
+
+	my $file_multi = catfile($fs{data}, 'v3', $lang, $target, "$target\.multi_$unit\_word");
+
+	%multi = retrieve($file_multi);
+
+}
 
 #
 # calculate feature frequencies
@@ -830,8 +846,17 @@ for my $unit_id_target (keys %match_target) {
 		#
 		
 		# score
+		my $score;
 		
-		my $score = score_default($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance);
+		if ($bigram_scoring) {
+		
+			$score = score_bigram($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance);
+		
+		} else {
+		
+			$score = score_default($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance);
+		
+		}
 								
 		if ( $score < $cutoff) {
 
@@ -1241,6 +1266,55 @@ sub score_default {
 	$score = sprintf("%.3f", log($score/$distance));
 	
 	return $score;
+}
+
+sub score_bigram {
+	# of the matching bigrams, find the one with the lowest frequency
+	# default version uses the target's .multi file only, and exact words only.
+
+	my ($match_t_ref, $match_s_ref, $distance) = @_;
+
+	my %match_target = %$match_t_ref;
+	my %match_source = %$match_s_ref;
+		
+	# make word-pairs out of the matching bigrams
+	
+	my @words = keys %match_target;
+	
+	my @bigrams;
+	
+	foreach my $anchor_address (shift @words) {
+	
+		last if scalar @words < 1;
+		
+		for my $other_address (@words) {
+		
+			my $form_a = $token_target[$anchor_address]{FORM};
+		
+			my $form_b = $token_target[$other_address]{FORM};
+	
+			push(@bigrams, join("~", sort($form_a, $form_b)));
+			
+		}
+	
+	}	
+	
+	#find the lowest frequency shared bigram
+	
+	my $score;
+	
+	foreach my $bigram (@bigrams) {
+	
+		next unless $multi{$bigram};
+		
+		$score += 1/scalar(@{$multi{$bigram}});# if 1/scalar(@{$multi{$bigram}}) < $freq;		
+	
+	}
+	
+	$score = sprintf("%.3f", log($score/$distance));
+	
+	return $score
+
 }
 
 

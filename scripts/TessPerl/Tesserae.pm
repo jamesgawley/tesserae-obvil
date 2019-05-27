@@ -8,6 +8,7 @@ use Unicode::Normalize;
 use Encode;
 use Config;
 use File::Slurp;
+use open ':encoding(UTF-8)';
 
 require Exporter;
 
