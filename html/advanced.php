@@ -143,6 +143,12 @@
 						</select>
 					</td>
 				</tr>
+				<tr>
+					<th>Use Bigram Scoring:</td>
+					<td>
+						<input type="checkbox" name="bigram_scoring" value="1">
+					</td>
+				</tr>
 			</table>
 		</div>
 		<div style="text-align:center; padding:20px;">
