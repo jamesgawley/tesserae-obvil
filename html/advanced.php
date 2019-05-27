@@ -146,7 +146,10 @@
 				<tr>
 					<th>Use Bigram Scoring:</td>
 					<td>
-						<input type="checkbox" name="bigram_scoring" value="1">
+						<select name="bigram_scoring">
+							<option value="yes">yes</option>
+							<option value="no" selected="selected">no</option>
+						</select>
 					</td>
 				</tr>
 			</table>
