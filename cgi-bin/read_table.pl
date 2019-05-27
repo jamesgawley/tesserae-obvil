@@ -429,7 +429,7 @@ else {
 	@include         = $query->param('include');
 	$recall_cache    = $query->param('recall_cache') || $recall_cache;
 	$bigram_scoring     = $query->param('bigram_scoring')    || $bigram_scoring;
-	
+
 	unless (defined $source) {
 	
 		die "read_table.pl called from web interface with no source";
@@ -439,7 +439,7 @@ else {
 		die "read_table.pl called from web interface with no target";
 	}
 		
-	$quiet = 1;
+	$quiet = 0;
 	
 	# how to redirect browser to results
 
@@ -618,8 +618,8 @@ unless ($quiet) {
 	print STDERR "score basis=$score_basis\n";
 	print STDERR "corpus-wide flag=$corpus_wide\n";
 	print STDERR "File for source frequency=$file_freq_source\n";	
-	print STDERR "File for target frequency=$file_freq_target\n";	
-	print STDERR "Use bigram scoring: $bigram_scoring\n";	
+	print STDERR "File for target frequency=$file_freq_target\n";		
+	print STDERR "Use bigram scoring: $bigram_scoring\n";
 }
 
 
