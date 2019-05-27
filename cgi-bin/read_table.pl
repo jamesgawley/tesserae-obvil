@@ -550,7 +550,7 @@ if ($bigram_scoring eq "yes") {
 
 	my $file_multi = catfile($fs{data}, 'v3', $lang, $target, "$target\.multi_$unit\_word");
 
-	%multi = retrieve($file_multi) or die $!;
+	%multi = %{ retrieve($file_multi) } or die $!;
 
 }
 
@@ -1303,19 +1303,25 @@ sub score_bigram {
 	
 	#find the lowest frequency shared bigram
 	
-	my $score;
+	my $score = .000001;
 	
 	foreach my $bigram (@bigrams) {
 	
 		next unless $multi{$bigram};
 		
-		$score += 1/scalar(@{$multi{$bigram}});# if 1/scalar(@{$multi{$bigram}}) < $freq;		
+		my $num_bigrams = scalar(keys %{$multi{$bigram}});
+		
+	#	$score += 1/$num_bigrams;# if 1/$num_bigrams < $freq;		
+	
+		$score = 1/$num_bigrams if 1/$num_bigrams > $score;
 	
 	}
+		
+	$score =  sprintf("%.3f", ($score/$distance));
 	
-	$score = sprintf("%.3f", log($score/$distance));
+	print join @bigrams unless $score;
 	
-	return $score
+	return $score;
 
 }
 
