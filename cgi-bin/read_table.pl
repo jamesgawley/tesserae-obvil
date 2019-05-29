@@ -218,7 +218,7 @@ my $stopwords = 10;
 
 # bigram_scoring determines drops word frequencies in favor of bigram frequencies
 
-my $bigram_scoring = "no";
+my $bigram_scoring = 0;
 
 # stoplist_basis is where we draw our feature
 # frequencies from: source, target, or corpus
@@ -305,7 +305,7 @@ GetOptions(
 			'benchmark'    => \$bench,
 			'no-cgi'       => \$no_cgi,
 			'quiet'        => \$quiet,
-			'bigram_scoring=s' => \$bigram_scoring,
+			'bigram_scoring' => \$bigram_scoring,
 			'help'         => \$help);
 
 #
@@ -546,7 +546,7 @@ if ($corpus_wide == 1) {
 #
 my %multi;
 
-if ($bigram_scoring eq "yes") {
+if ($bigram_scoring) {
 
 	my $file_multi = catfile($fs{data}, 'v3', $lang, $target, "$target\.multi_$unit\_word");
 
@@ -850,7 +850,7 @@ for my $unit_id_target (keys %match_target) {
 		# score
 		my $score;
 		
-		if ($bigram_scoring eq "yes") {
+		if ($bigram_scoring) {
 		
 			$score = score_bigram($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance, $unit_id_target);
 		
