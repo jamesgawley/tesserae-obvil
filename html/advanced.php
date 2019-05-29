@@ -144,9 +144,9 @@
 					</td>
 				</tr>
 				<tr>
-					<th>Use Bigram Scoring:</td>
+					<th>Use bigram filter:</td>
 					<td>
-						<input type="checkbox" id="bigram_scoring">
+						<input type="checkbox" name="bigram_scoring" value="1">
 					</td>
 				</tr>
 			</table>
