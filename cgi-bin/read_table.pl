@@ -1290,11 +1290,22 @@ sub score_bigram {
 		last if scalar @words < 1;
 		
 		for my $other_address (@words) {
-		
-			my $form_a = $token_target[$anchor_address]{FORM};
-		
-			my $form_b = $token_target[$other_address]{FORM};
-	
+			
+			my $form_a;
+			my $form_b;
+
+			if ($feature eq 'stem') {
+
+				$form_a = ${Tesserae::feat($lang, 'stem', $form_a)}[0];
+				$form_b = ${Tesserae::feat($lang, 'stem', $form_b)}[0];
+				
+			} else {			
+			
+				$form_a = $token_target[$anchor_address]{FORM};
+				$form_b = $token_target[$other_address]{FORM};
+			
+			}
+			
 			push(@bigrams, join("~", sort($form_a, $form_b)));
 			
 		}
