@@ -84,3 +84,67 @@
 <vic. hug. 36.0.0>,Pleine mer
 <vic. hug. 37.0.0>,Plein ciel
 <vic. hug. 38.0.0>,La trompette du jugement
+<verl. am. 1.0.0> Prière du matin
+<verl. am. 2.0.0> A Edmond Lepelletier
+<verl. am. 3.0.0> Un conte
+<verl. am. 4.0.0> Bournemouth
+<verl. am. 5.0.0> There
+<verl. am. 6.0.0> Un crucifix
+<verl. am. 7.0.0> Ballade A propos de deux ormeaux qu' il avait
+<verl. am. 8.0.0> Sur un reliquaire
+<verl. am. 9.0.0> A Madame X...
+<verl. am. 10.0.0> Un veuf parle
+<verl. am. 11.0.0> Il parle encore
+<verl. am. 12.0.0> Ballade En rêve
+<verl. am. 13.0.0> Adieu
+<verl. am. 14.0.0> Ballade En l' honneur de Louise Michel
+<verl. am. 15.0.0> A Louis II de Bavière
+<verl. am. 16.0.0> Parsifal
+<verl. am. 17.0.0> Saint Graal
+<verl. am. 18.0.0> "Gais et contents"
+<verl. am. 19.0.0> A Fernand Langlois
+<verl. am. 20.0.0> Délicatesse
+<verl. am. 21.0.0> Angélus de midi
+<verl. am. 22.0.0> A Léon Valade
+<verl. am. 23.0.0> A Ernest Delahaye
+<verl. am. 24.0.0> A Emile Blémont
+<verl. am. 25.0.0> A Charles de Sivry
+<verl. am. 26.0.0> A Emmanuel Chabrier
+<verl. am. 27.0.0> A Edmond Thomas
+<verl. am. 28.0.0> A Charles Morice
+<verl. am. 29.0.0> A Maurice du Plessys
+<verl. am. 30.0.0> A propos d' un "centenaire" de Calderon
+<verl. am. 31.0.0> A Victor Hugo
+<verl. am. 32.0.0> Saint Benoit-Joseph Labre
+<verl. am. 33.0.0> Paraboles
+<verl. am. 34.0.0> Sonnet héroïque
+<verl. am. 35.0.0> Drapeau vrai
+<verl. am. 36.0.0> Pensée du soir
+<verl. am. 37.0.0> Paysages
+<verl. am. 38.0.0> Lucien Létinois
+<verl. am. 38.1.0> Lucien Létinois I 
+<verl. am. 38.2.0> Lucien Létinois II 
+<verl. am. 38.3.0> Lucien Létinois III 
+<verl. am. 38.4.0> Lucien Létinois IV 
+<verl. am. 38.5.0> Lucien Létinois V 
+<verl. am. 38.6.0> Lucien Létinois VI 
+<verl. am. 38.7.0> Lucien Létinois VII 
+<verl. am. 38.8.0> Lucien Létinois VIII 
+<verl. am. 38.9.0> Lucien Létinois IX 
+<verl. am. 38.10.0> Lucien Létinois X 
+<verl. am. 38.11.0> Lucien Létinois XI 
+<verl. am. 38.12.0> Lucien Létinois XII 
+<verl. am. 38.13.0> Lucien Létinois XIII 
+<verl. am. 38.14.0> Lucien Létinois XIV 
+<verl. am. 38.15.0> Lucien Létinois XV 
+<verl. am. 38.16.0> Lucien Létinois XVI 
+<verl. am. 38.17.0> Lucien Létinois XVII 
+<verl. am. 38.18.0> Lucien Létinois XVIII 
+<verl. am. 38.19.0> Lucien Létinois XIX 
+<verl. am. 38.20.0> Lucien Létinois XX 
+<verl. am. 38.21.0> Lucien Létinois XXI 
+<verl. am. 38.22.0> Lucien Létinois XXII 
+<verl. am. 38.23.0> Lucien Létinois XXIII 
+<verl. am. 38.24.0> Lucien Létinois XXIV 
+<verl. am. 39.0.0> Batignolles
+<verl. am. 40.0.0> A Georges Verlaine
