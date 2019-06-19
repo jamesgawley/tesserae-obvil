@@ -39,7 +39,11 @@ Force all texts to be treated as belonging to language LANG.
 
 =item B<--use-lingua-stem>
 
-Use Lingua::Stem instead of build-in stem dictionaries.  Untested in this script!
+Use Lingua::Stem instead of build-in stem dictionaries.  Needed for French.
+
+=item B<--text>
+
+Specify a single text for which to produce bigram indices.
 
 =item B<--parallel N>
 
@@ -197,6 +201,9 @@ my $quiet = 0;
 
 my %omit;
 
+# do you want to process just one text?
+my $text;
+
 #
 # command-line options
 #
@@ -206,6 +213,7 @@ GetOptions(
 	'parallel=i'      => \$max_processes,
 	'quiet'           => \$quiet,
 	'use-lingua-stem' => \$use_lingua_stem,
+	'text=s'		  => \$text,
 	'help'            => \$help);
 
 #
@@ -250,9 +258,18 @@ if ($max_processes) {
 }
 
 # get the list of texts to index
+my @corpus;
 
-my @corpus = @{Tesserae::get_textlist($lang, -no_part => 1)};
-@corpus = grep { ! /vulgate/ } @corpus;
+unless ($text) {
+
+	@corpus = @{Tesserae::get_textlist($lang, -no_part => 1)};
+
+}
+else {
+
+	$corpus[0] = $text;
+	
+}
 
 #
 # initialize stemmer
