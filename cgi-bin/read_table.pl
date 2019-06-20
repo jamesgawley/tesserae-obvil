@@ -505,9 +505,14 @@ my $lang = Tesserae::lang($target);
 
 my $modern = 0;
 
-if ($lang eq 'en') {
+if ($lang eq 'en' or $lang eq 'fr') {
 
 	$modern = 1;
+
+	Tesserae::initialize_lingua_stem($lang);
+
+}
+
 
 }
 
@@ -1272,8 +1277,8 @@ sub score_default {
 
 sub score_bigram {
 	# of the matching bigrams, find the one with the lowest frequency
-	# default version uses the target's .multi file only, and exact words only.
-
+	# use that bigram's composite score for the scoring system
+	
 	my ($match_t_ref, $match_s_ref, $distance, $unit_id_target) = @_;
 
 	my %match_target = %$match_t_ref;
