@@ -511,9 +511,6 @@ if ($lang eq 'en' or $lang eq 'fr') {
 
 	Tesserae::initialize_lingua_stem($lang);
 
-
-
-
 }
 
 # If corpus-wide frequencies need to be counted, set the corpus-wide flag.
@@ -1287,7 +1284,7 @@ sub score_bigram {
 	# make word-pairs out of the matching bigrams
 	
 	my @words = keys %match_target;
-	
+		
 	my @bigrams;
 	
 	foreach my $anchor_address (shift @words) {
@@ -1301,8 +1298,12 @@ sub score_bigram {
 
 			if ($feature eq 'stem') {
 
+				$form_a = $token_target[$anchor_address]{FORM};
+				$form_b = $token_target[$other_address]{FORM};
+
 				$form_a = ${Tesserae::feat($lang, 'stem', $form_a)}[0];
 				$form_b = ${Tesserae::feat($lang, 'stem', $form_b)}[0];
+				
 				
 			} else {			
 			
@@ -1340,11 +1341,11 @@ sub score_bigram {
 	if ($freq < 2) {
 
 		foreach my $bigram (@bigrams) {
-	
+
 			next unless $multi{$bigram};
 	
 			$score = $multi{$bigram}->{$unit_id_target} unless $score > $multi{$bigram}->{$unit_id_target};
-		
+
 		}
 	
 	}

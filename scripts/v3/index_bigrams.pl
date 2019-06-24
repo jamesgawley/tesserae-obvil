@@ -402,6 +402,14 @@ for my $text (@corpus) {
 						@stems_a = @{Tesserae::feat($lang, 'stem', $form_a)};
 						@stems_b = @{Tesserae::feat($lang, 'stem', $form_b)};
 					
+						if (scalar (@stems_a) > 1 or scalar(@stems_b) > 1) {
+						
+							print "$form_a has stems: " . join (",", @stems_a) . "\n";
+							print "$form_b has stems: " . join (",", @stems_b) . "\n";
+							my @useless = <STDIN>;
+						
+						}
+					
 					}
 					else {			
 					
@@ -414,7 +422,9 @@ for my $text (@corpus) {
 						
 						for my $stem_b (@stems_b) {
 							
-							$stem_pairs{join("~", sort($stem_a, $stem_b))}++;
+							my $score = log((1/$freq_stem{$form_a} + 1/$freq_stem{$form_b}) / ($j - $i));
+							
+							$stem_pairs{join("~", sort($stem_a, $stem_b))}->{$unit_id} = $score;
 
 						}
 					}					
