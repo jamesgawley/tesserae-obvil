@@ -1395,6 +1395,8 @@ sub select_file_freq {
 		if (defined $abbr{$origin} and defined Tesserae::lang($origin)) {
 		
 			$name = $origin;
+			
+			print STDERR "Large text recognized as '$name'.";
 		}
 	}
 	
