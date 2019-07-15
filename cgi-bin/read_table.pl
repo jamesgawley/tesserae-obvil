@@ -644,9 +644,7 @@ unless ($quiet) {
 	print STDERR "reading source data\n";
 }
 
-my $original_source = get_original_name($source);
-
-my $file_source = catfile($fs{data}, 'v3', Tesserae::lang($source), $original_source, $source);
+my $file_source = catfile($fs{data}, 'v3', Tesserae::lang($source), $source, $source);
 
 my @token_source   = @{ retrieve("$file_source.token") };
 my @unit_source    = @{ retrieve("$file_source.$unit") };
@@ -656,8 +654,6 @@ unless ($quiet) {
 
 	print STDERR "reading target data\n";
 }
-
-my $original_target = get_original_name($target);
 
 my $file_target = catfile($fs{data}, 'v3', Tesserae::lang($target), $target, $target);
 
