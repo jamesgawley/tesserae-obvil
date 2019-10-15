@@ -6,7 +6,7 @@ build-trans-cache.pl - install translation dictionary
 
 =head1 SYNOPSIS
 
-build-trans-cache.pl [--feature NAME] --la|grc DICT [--la|grc DICT]
+build-trans-cache.pl [--feature NAME] --la|fr DICT [--la|fr DICT]
 
 =head1 DESCRIPTION
 
@@ -16,21 +16,21 @@ Reads one or more translation/synonymy dictionaries in CSV format; creates and i
 
 To create a Greek-Latin translation feature set, first use I<sims-export.py> to create a dictionary with Greek headwords in the first position on the line, followed by Latin translations. Then do, e.g.,
 
-  I<build-trans-cache.pl> --feature g2l --grc g2l_dict.csv
+  I<build-trans-cache.pl> --feature g2l --fr g2l_dict.csv
 
 This will create a feature set called "g2l," using the dictionary "g2l_dict.csv" for the Greek feature set and the base stem dictionary for the Latin.
 
 On the other hand, to create a synonymy feature set, first use I<sims-export.py> to create a dictionary without the translation filter, so that Greek and Latin headwords are used indiscriminately throughout the CSV dictionary. Then give I<build-trans-cache> the same CSV file for both Greek and Latin, e.g.,
 
-   I<build-trans-cache.pl> --feature syn --grc syn_dict.csv --la syn_dict.csv
+   I<build-trans-cache.pl> --feature syn --fr syn_dict.csv --la syn_dict.csv
 
 =head1 OPTIONS AND ARGUMENTS
 
 =over
 
-=item B<--la|grc> DICT
+=item B<--la|fr> DICT
 
-Language-based dictionary to read. Use B<--la> to specify a Latin dictionary, B<--grc> to specify a Greek dictionary. If a dictionary is provided for one language only, the other will use the existing stem dictionary.
+Language-based dictionary to read. Use B<--la> to specify a Latin dictionary, B<--fr> to specify a Greek dictionary. If a dictionary is provided for one language only, the other will use the existing stem dictionary.
 
 =item B<--feature> NAME
 
@@ -154,7 +154,7 @@ my %file;
 GetOptions(
 	'feature=s'   => \$feat,
 	'latin=s'     => \$file{la},
-	'grc|greek=s' => \$file{grc},
+	'fr|greek=s' => \$file{fr},
 	'help'        => \$help,
 	'quiet'       => \$quiet
 );
@@ -171,7 +171,7 @@ binmode STDOUT, ':utf8';
 #
 # parse the csv dictionary
 #
-for my $lang (qw/grc la/) {
+for my $lang (qw/fr la/) {
 
 	my %trans;
 

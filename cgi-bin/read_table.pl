@@ -182,7 +182,7 @@ use CGI qw/:standard/;
 use Storable qw(nstore retrieve);
 use File::Path qw(mkpath rmtree);
 use Encode;
-use Lingua::Stem qw(stem);
+#use Lingua::Stem qw(stem);
 
 binmode STDERR, 'utf8';
 
@@ -509,7 +509,7 @@ if ($lang eq 'en' or $lang eq 'fr') {
 
 	$modern = 1;
 
-	Tesserae::initialize_lingua_stem($lang);
+#	Tesserae::initialize_lingua_stem($lang);
 
 }
 
