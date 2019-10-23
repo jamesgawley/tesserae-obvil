@@ -1,16 +1,16 @@
 <?php
 	$lang = array(
-		'target' => 'la',
-		'source' => 'grc'
+		'target' => 'fr',
+		'source' => 'la'
 	);
 	$selected = array(
-		'target' => 'vergil.aeneid.part.1',
-		'source' => 'homer.iliad'
+		'target' => 'voltaire.henriade.part.1',
+		'source' => 'vergil.aeneid'
 	);
 	$features = array(
-		'g_l' => 'Greek-Latin dictionary'
+		'f2l' => 'French-Latin dictionary'
 	);
-	$selected_feature = 'g_l';
+	$selected_feature = 'f2l';
 	$page = 'search';
 ?>
 
@@ -21,11 +21,9 @@
 <?php include "nav_lang.php"; ?>
 <div id="main">
 	
-	<h1>Greek-Latin Search</h1>
+	<h1>French-Latin Search</h1>
 	
 	<p>
-		To learn more about the Latin-Greek search method, visit the 
-		<a href="http://tesserae.caset.buffalo.edu/blog/latin-greek-search-competing-methods/" target="_blank">blog</a>.<br>
 				For explanations of advanced features, see the 
 		<a href="<?php echo $url_html . '/help_advanced.php' ?>">Instructions</a> page.
 
