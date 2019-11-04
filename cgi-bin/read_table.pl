@@ -505,11 +505,11 @@ my $lang = Tesserae::lang($target);
 
 my $modern = 0;
 
-if ($lang eq 'en' or $lang eq 'fr') {
+if ($lang eq 'en') {
 
 	$modern = 1;
 
-#	Tesserae::initialize_lingua_stem($lang);
+	Tesserae::initialize_lingua_stem($lang);
 
 }
 
