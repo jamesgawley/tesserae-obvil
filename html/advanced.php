@@ -144,13 +144,13 @@
 					</td>
 				</tr>
 				<tr>
-					<th>Use bigram filter:</td>
+					<th>Include Unigrams:</td>
 					<td>
 						<input type="checkbox" name="unigram" value="1">
 					</td>
 				</tr>
 				<tr>
-					<th>Use bigram filter:<br>(Incompatible with unigram search.)</td>
+					<th>Use bigram filter:</td>
 					<td>
 						<input type="checkbox" name="bigram_scoring" value="1">
 					</td>
