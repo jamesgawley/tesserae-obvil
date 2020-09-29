@@ -492,3 +492,7 @@ table.fulltext {
 
 	font-size:100%;
 }
+select {
+        width: 300px;
+        margin: 10px;
+    }
