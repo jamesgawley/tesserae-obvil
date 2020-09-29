@@ -193,7 +193,7 @@
 					<tr>
 						<td colspan="2">
 							<select name="include" ID="include" multiple="true">
-								<?php include $fs_html.'/textlist.la.l.php'; ?>
+								<?php include $fs_html.'/textlist.fr.l.php'; ?>
 							</select>
 						</td>
 					</tr>
