@@ -492,7 +492,9 @@ table.fulltext {
 
 	font-size:100%;
 }
-select {
-        width: 300px;
+select#include {
+        width: 600px;
         margin: 10px;
+	height: 600px;
+	line-height: 600px;
     }
