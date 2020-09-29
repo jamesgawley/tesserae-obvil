@@ -191,7 +191,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td colspan="4" rowspan="10">
 							<select name="include" ID="include" multiple="true">
 								<?php include $fs_html.'/textlist.fr.l.php'; ?>
 							</select>
