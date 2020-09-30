@@ -289,6 +289,9 @@ my $freq_basis = 'text';
 my $frontend = 'default';
 my %redirect;
 
+# should we limit ourselves to bigrams?
+my $unigram = 0;
+
 GetOptions( 
 			'source=s'     => \$source,
 			'target=s'     => \$target,
@@ -303,6 +306,7 @@ GetOptions(
 			'cutoff=f'     => \$cutoff,
 			'score=s'      => \$score_basis,
 			'benchmark'    => \$bench,
+			'unigram'	   => \$unigram,
 			'no-cgi'       => \$no_cgi,
 			'quiet'        => \$quiet,
 			'bigram_scoring' => \$bigram_scoring,
@@ -707,6 +711,10 @@ for my $key (keys %index_source) {
 
 	next unless ( defined $index_target{$key} );
 
+#	print STDERR "\n\$key: $key\n\$index_target{$key}: $index_target{$key}";
+#	print "\nNot in stoplist" unless ( grep { $_ eq $key } @stoplist);
+#	my $useless = <STDIN>;
+
 	# skip key if it's in the stoplist
 
 	next if ( grep { $_ eq $key } @stoplist);
@@ -784,81 +792,98 @@ for my $unit_id_target (keys %match_target) {
 		#
 			
 		# check that the target has two matching words
+		unless ($unigram == 1) {	
+
+			if ( scalar( keys %{$match_target{$unit_id_target}{$unit_id_source}} ) < 2) {
 			
-		if ( scalar( keys %{$match_target{$unit_id_target}{$unit_id_source}} ) < 2) {
-		
-			delete $match_target{$unit_id_target}{$unit_id_source};
-			delete $match_source{$unit_id_target}{$unit_id_source};
-			next;
-		}
+				delete $match_target{$unit_id_target}{$unit_id_source};
+				delete $match_source{$unit_id_target}{$unit_id_source};
+				next;
+			}
 		
 		# check that the source has two matching words
 	
-		if ( scalar( keys %{$match_source{$unit_id_target}{$unit_id_source}} ) < 2) {
+			if ( scalar( keys %{$match_source{$unit_id_target}{$unit_id_source}} ) < 2) {
 	
-			delete $match_target{$unit_id_target}{$unit_id_source};
-			delete $match_source{$unit_id_target}{$unit_id_source};
-			next;			
-		}		
-	
+				delete $match_target{$unit_id_target}{$unit_id_source};
+				delete $match_source{$unit_id_target}{$unit_id_source};
+				next;			
+			}		
+
 		# make sure each phrase has at least two different inflected forms
 		
-		my %seen_forms;	
+			my %seen_forms;	
 		
-		for my $token_id_target (keys %{$match_target{$unit_id_target}{$unit_id_source}} ) {
+			for my $token_id_target (keys %{$match_target{$unit_id_target}{$unit_id_source}} ) {
 						
-			$seen_forms{$token_target[$token_id_target]{FORM}}++;
-		}
+				$seen_forms{$token_target[$token_id_target]{FORM}}++;
+			}
 		
-		if (scalar(keys %seen_forms) < 2) {
+			if (scalar(keys %seen_forms) < 2) {
 		
-			delete $match_target{$unit_id_target}{$unit_id_source};
-			delete $match_source{$unit_id_target}{$unit_id_source};
-			next;			
-		}	
+				delete $match_target{$unit_id_target}{$unit_id_source};
+				delete $match_source{$unit_id_target}{$unit_id_source};
+				next;			
+			}	
 		
-		%seen_forms = ();
+			%seen_forms = ();
+			
+			for my $token_id_source ( keys %{$match_source{$unit_id_target}{$unit_id_source}} ) {
 		
-		for my $token_id_source ( keys %{$match_source{$unit_id_target}{$unit_id_source}} ) {
+				$seen_forms{$token_source[$token_id_source]{FORM}}++;
+			}
+
+			if (scalar(keys %seen_forms) < 2) {
 		
-			$seen_forms{$token_source[$token_id_source]{FORM}}++;
+				delete $match_target{$unit_id_target}{$unit_id_source};
+				delete $match_source{$unit_id_target}{$unit_id_source};
+				next;			
+			}	
 		}
 
-		if (scalar(keys %seen_forms) < 2) {
-		
-			delete $match_target{$unit_id_target}{$unit_id_source};
-			delete $match_source{$unit_id_target}{$unit_id_source};
-			next;			
-		}	
-				
-		#
-		# calculate the distance
-		# 
-		
-		my $distance = dist($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance_metric);
-		
-		if ($distance > $max_dist) {
-		
-			delete $match_target{$unit_id_target}{$unit_id_source};
-			delete $match_source{$unit_id_target}{$unit_id_source};
-			next;
-		}
-		
-		
 		#
 		# calculate the score
 		#
-		
+	
 		# score
 		my $score;
+
+		# two different proceedures for bigrams+ and unigrams
+
+		if ( scalar( keys %{$match_target{$unit_id_target}{$unit_id_source}} ) > 1
+				&& scalar( keys %{$match_source{$unit_id_target}{$unit_id_source}} ) > 1) {
+				
+			#
+			# calculate the distance
+			# 
 		
-		if ($bigram_scoring) {
+			my $distance = dist($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance_metric);
 		
-			$score = score_bigram($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance, $unit_id_target);
+			if ($distance > $max_dist) {
 		
-		} else {
+				delete $match_target{$unit_id_target}{$unit_id_source};
+				delete $match_source{$unit_id_target}{$unit_id_source};
+				next;
+			}
 		
-			$score = score_default($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance);
+			
+			if ($bigram_scoring) {
+		
+				$score = score_bigram($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance, $unit_id_target);
+		
+			} else {
+		
+				$score = score_default($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source}, $distance);
+		
+			}
+		
+		}
+		# if unigram scoring is enabled and this is a unigram match, score accordingly
+		else {
+
+			$score = score_unigram($match_target{$unit_id_target}{$unit_id_source}, $match_source{$unit_id_target}{$unit_id_source});
+			
+			
 		
 		}
 								
@@ -962,7 +987,7 @@ print "total>>" . (time-$t0)  . "\n" if $no_cgi and $bench;
 #   and in filtering out bad results
 
 sub dist {
-
+	
 	my ($match_t_ref, $match_s_ref, $metric) = @_;
 	
 	my %match_target = %$match_t_ref; # The list of matchwords come to this subroutine in the form of a hash. The keys are token ID #s.
@@ -1014,7 +1039,7 @@ sub dist {
 			
 		# now do the same in the source phrase
 			
-		my @s;
+		my @s = ("nothing", "here");
 		
 		unless ($corpus_wide == 1) {
 			
@@ -1022,16 +1047,16 @@ sub dist {
 
 		} 
 		else {
-
+	
 			@s = sort {stem_frequency($token_source[$a]{FORM}, 'source') <=> stem_frequency($token_source[$b]{FORM}, 'source')} @source_id; 
 			
 		}
-		
 		if ($s[0] > $s[1]) { @s[0,1] = @s[1,0] }
 			
 		for ($s[0]..$s[1]) {
-		
+					
 		  $dist++ if $token_source[$_]{TYPE} eq 'WORD';
+		  
 		}
 	}
 	
@@ -1358,6 +1383,46 @@ sub score_bigram {
 		
 	return $score;
 
+}
+
+
+sub score_unigram {
+
+	my ($match_t_ref, $match_s_ref) = @_;
+
+	my %match_target = %$match_t_ref;
+	my %match_source = %$match_s_ref;
+	
+	my $score = 0;
+
+	my $freq;
+
+	for my $token_id_target (keys %match_target ) {
+									
+		# find the frequency score for this term
+		
+		# if $freq_basis is set to corpus and $score_basis is set to stem
+		# retrieve the stem array and take the average frequency value of all possibilities
+		
+		unless ($corpus_wide == 1) {
+		
+			$freq = 1/$freq_target{$token_target[$token_id_target]{FORM}}; 
+		
+		} 
+		else {
+		
+			$freq = 1/stem_frequency($token_target[$token_id_target]{FORM}, 'target');
+		
+		}
+	}
+	
+	# 
+	# (log10(stats$frequency/sum(stats$frequency))* -2)
+	
+	$score = (log($freq)/log(10)) * 2;
+	
+	return $score;
+	
 }
 
 
